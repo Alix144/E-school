@@ -5,10 +5,14 @@ import AdminAddS from "../components/admin/AdminAddS";
 import AdminEditT from "../components/admin/AdminEditT";
 import AdminEditS from "../components/admin/AdminEditS";
 
+import TeacherStudents from "../components/teacher/TeacherStudents";
+import TeacherHW from "../components/teacher/TeacherHW";
+import TeacherHwGrade from "../components/teacher/TeacherHwGrade";
+
 const Body = () => {
     return ( 
         <div className="body">
-            <AdminEditT/>
+            <TeacherHwGrade/>
         </div>
      );
 }

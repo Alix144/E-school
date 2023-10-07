@@ -87,11 +87,16 @@ input{
   border-radius: 2px;
 }
 
+textarea{
+  padding: 5px;
+}
+
 /**** body ****/
 .body{
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 
@@ -105,9 +110,21 @@ input{
   text-align: center;
 }
 
+.announcement{
+  width: 22%;
+  height: 300px;
+  position: absolute;
+  right: 20px;
+}
+
 .table-div{
   width: 95%;
   height: 300px;
+  overflow-y: scroll;
+}
+
+.tda{
+  height: 250px;
   overflow-y: scroll;
 }
 

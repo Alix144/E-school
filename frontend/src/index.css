@@ -151,17 +151,16 @@ tr:hover{
   background-color: #F4C737;
 }
 
-
 th{
   border-top: solid 1px #fff;
 }
 
 
-.adminTeachers{
+.teachers{
   background-color: #13ABE7;
 }
 
-.adminStudents{
+.students{
   margin-bottom: 20px;
   background-color: #F4C737;
 }
@@ -179,6 +178,65 @@ button{
 button:hover{
   background-color: #7BD2F4;
 }
+
+/**** form ****/
+.form{
+  margin-top: 20px;
+  padding: 10px;
+  width: 350px;
+  height: 450px;
+  color: #fff;
+  position: relative;
+}
+
+.form h1{
+  text-align: center;
+}
+
+.form button{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 20px;
+}
+
+form div{
+  margin: 15px auto;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.radio{
+  display: block;
+}
+
+.radio{
+  height: 150px;
+  overflow-y: scroll;
+}
+
+.subject{
+  margin: 5px;
+  flex-direction: row;
+  align-items: center;
+}
+
+.subject input{
+  margin-right: 5px;
+}
+
+.delete{
+  background-color: #ff4a4a;
+  color: #fff;
+  bottom: 50px !important;
+}
+
+.delete:hover{
+  background-color: #fff;
+  color: #ff4a4a;
+}
+
 
 /********scroll bar*********/
 

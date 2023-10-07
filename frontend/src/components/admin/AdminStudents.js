@@ -1,82 +1,71 @@
-const AdminTeachers = () => {
+const AdminStudents = () => {
     return ( 
-        <div className="adminTeachers box">
-            <h1>Teachers</h1>
+        <div className="students box">
+            <h1>Students</h1>
             <div className="table-div">
             <table>
                 <tr className="th">
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Subject</th>
-                    <th>Number Of Students</th>
+                    <th>Subjects</th>
                 </tr>
                 <tr>
                     <td>ali</td>
-                    <td>askkkkkkkkkkkkkkkkkkkd@hotmail.com</td>
-                    <td>Subject</td>
+                    <td>asd@hotmail.com</td>
                     <td>34</td>
                 </tr>
                 <tr>
                     <td>ali</td>
                     <td>asd@hotmail.com</td>
-                    <td>Subject</td>
                     <td>34</td>
                 </tr>
                 <tr>
                     <td>ali</td>
                     <td>asd@hotmail.com</td>
-                    <td>Subject</td>
                     <td>34</td>
                 </tr>
                 <tr>
                     <td>ali</td>
                     <td>asd@hotmail.com</td>
-                    <td>Subject</td>
                     <td>34</td>
                 </tr>
                 <tr>
                     <td>ali</td>
                     <td>asd@hotmail.com</td>
-                    <td>Subject</td>
                     <td>34</td>
                 </tr>
                 <tr>
                     <td>ali</td>
                     <td>asd@hotmail.com</td>
-                    <td>Subject</td>
                     <td>34</td>
                 </tr>
                 <tr>
                     <td>ali</td>
                     <td>asd@hotmail.com</td>
-                    <td>Subject</td>
                     <td>34</td>
                 </tr>
                 <tr>
                     <td>ali</td>
                     <td>asd@hotmail.com</td>
-                    <td>Subject</td>
                     <td>34</td>
                 </tr>
                 <tr>
                     <td>ali</td>
                     <td>asd@hotmail.com</td>
-                    <td>Subject</td>
                     <td>34</td>
                 </tr>
                 <tr>
                     <td>ali</td>
                     <td>asd@hotmail.com</td>
-                    <td>Subject</td>
                     <td>34</td>
                 </tr>
 
             </table>
             </div>
 
-            <button>Add Teacher</button>
+            <button>Add Student</button>
         </div>
      );
 }
  
-export default AdminTeachers;
+export default AdminStudents;

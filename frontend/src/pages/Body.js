@@ -9,10 +9,11 @@ import TeacherStudents from "../components/teacher/TeacherStudents";
 import TeacherHW from "../components/teacher/TeacherHW";
 import TeacherHwGrade from "../components/teacher/TeacherHwGrade";
 
+
 const Body = () => {
     return ( 
         <div className="body">
-            <TeacherHwGrade/>
+       
         </div>
      );
 }

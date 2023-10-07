@@ -5,6 +5,7 @@
 }
 
 body{
+  font-family: 'Inria Sans', sans-serif;
   background-color: #E7F7FD;
 }
 
@@ -84,4 +85,108 @@ input{
   height: 25px;
   border: none;
   border-radius: 2px;
+}
+
+/**** body ****/
+.body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/**** tables ****/
+.box{
+  color: #fff;
+  margin-top: 20px;
+  padding: 10px;
+  width: 50%;
+  height: 400px;
+  text-align: center;
+}
+
+.table-div{
+  width: 95%;
+  height: 300px;
+  overflow-y: scroll;
+}
+
+table{
+  margin: 5px auto;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+th , td{
+  padding: 10px 0;
+  overflow-x: hidden;
+}
+
+tr{
+  border-bottom: solid 1px #fff;
+  cursor: pointer;
+}
+
+tr:hover{
+  background-color: #ffffff21;
+}
+
+.th:hover{
+  background-color: transparent;
+}
+
+.th{
+  cursor: auto;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.adminTeachers .th{
+  background-color: #13ABE7;
+}
+
+.adminStudents .th{
+  background-color: #F4C737;
+}
+
+
+th{
+  border-top: solid 1px #fff;
+}
+
+
+.adminTeachers{
+  background-color: #13ABE7;
+}
+
+.adminStudents{
+  margin-bottom: 20px;
+  background-color: #F4C737;
+}
+
+button{
+  margin-top: 10px;
+  width: 150px;
+  height: 25px;
+  cursor: pointer;
+  background-color: #CBEEFB;
+  border: none;
+  border-radius: 2px;
+}
+
+button:hover{
+  background-color: #7BD2F4;
+}
+
+/********scroll bar*********/
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0px 0 30px #fff;
+  border-radius: 5px;
 }

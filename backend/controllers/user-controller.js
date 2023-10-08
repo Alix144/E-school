@@ -16,6 +16,22 @@ export const getAllUser = async(req, res, next) => {
     return res.status(200).json({users});
 }
 
+export const getUserById = async(req, res, next) => {
+    const id = req.params.id.toString();
+    let users;
+    try{
+        users = await User.findById(id);
+    }catch(err){
+        console.log(err)
+    }
+
+    if(!users){
+        return res.status(404).json({message: "No User Found"})
+    }
+
+    return res.status(200).json({users});
+}
+
 export const getAllTeachers = async(req, res, next) => {
     let teachers;
     try{

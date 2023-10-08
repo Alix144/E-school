@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from 'cors';
+import router from "./routes/user-route.js";
 import { config } from 'dotenv';
 config();
 
@@ -14,16 +15,14 @@ app.use(cors({
 
 app.use(express.json())
 
+app.use("/user", router)
+
 app.get("/", (req, res)=>{
     res.send("messaghaha")
 })
 
 
-// mongoose.connect(process.env.MONGO_URL)
-// .then(() => app.listen(port, () => {
-//     console.log("Live on port " + port)
-// })).catch((err) => console.log(err))
-
-app.listen(port, () => {
-        console.log("Live on port " + port)
-    })
+mongoose.connect(process.env.MONGO_URI)
+.then(() => app.listen(port, () => {
+    console.log("Live on port " + port)
+})).catch((err) => console.log(err))

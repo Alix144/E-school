@@ -13,13 +13,13 @@ import TeacherAddHw from "../components/teacher/TeacherAddHw";
 import StudentHW from "../components/student/StudentHW";
 import StudentTeachers from "../components/student/StudentTeachers";
 import Announcments from "../components/student/Announcements";
+import StudentsHwSubmit from "../components/student/StudentsHwSubmit";
+import AnnouncmentsDetail from "../components/student/AnnouncementDetail";
 
 const Body = () => {
     return ( 
         <div className="body">
-            <StudentHW/>
-            <StudentTeachers/>
-            <Announcments/>
+            <AnnouncmentsDetail/>
         </div>
      );
 }

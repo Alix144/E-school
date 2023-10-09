@@ -1,6 +1,5 @@
 import {configureStore, createSlice} from '@reduxjs/toolkit'
 
-
 const authSlice = createSlice({
     name: "auth",
     initialState: {isLoggedIn: false},
@@ -14,6 +13,16 @@ const authSlice = createSlice({
         }
     }
 })
+
+// const nameSlice = createSlice({
+//     name: "name",
+//     initialState: {name: ""},
+//     reducers: {
+//         setName(state, action){
+//             state.name = action.payload;
+//         }
+//     }
+// })
 
 const roleSlice = createSlice({
     name: "role",
@@ -35,12 +44,14 @@ const roleSlice = createSlice({
 })
 
 export const authActions = authSlice.actions;
+// export const nameActions = nameSlice.actions;
 export const roleActions = roleSlice.actions;
 
 export const store = configureStore({
     reducer: {
         auth: authSlice.reducer,
-        role: roleSlice.reducer
+        role: roleSlice.reducer,
+        // name: nameSlice.reducer
     }
 
 })

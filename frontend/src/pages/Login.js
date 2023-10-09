@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from "react-redux";
-import {authActions, roleActions} from '../store/index.js';
+import {authActions, roleActions } from '../store/index.js';
 
 
 const Login = () => {
@@ -44,6 +44,7 @@ const Login = () => {
             }else if(data.user.role === "student"){
                 dispatch(roleActions.student())
             }
+
 
             navigate("/body")
 

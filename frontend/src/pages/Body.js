@@ -16,10 +16,41 @@ import Announcments from "../components/student/Announcements";
 import StudentsHwSubmit from "../components/student/StudentsHwSubmit";
 import AnnouncmentsDetail from "../components/student/AnnouncementDetail";
 
+import { useDispatch, useSelector } from "react-redux";
+
 const Body = () => {
+    const role = useSelector(state => state.role.role);
+
     return ( 
+    
         <div className="body">
-            <AnnouncmentsDetail/>
+
+            {(role == "student") && 
+            <>
+                <h1>Student</h1>
+                <StudentHW/>
+                <StudentTeachers/>
+                <AnnouncmentsDetail/>
+            </>
+
+            }
+
+
+            {(role == "teacher") &&
+            <>
+                
+                <TeacherHW/>
+                <TeacherStudents/>
+            </>
+             }
+
+            {(role == "admin") &&
+            <>
+                <AdminTeachers/>
+                <AdminStudents/>
+            </>
+            }
+
         </div>
      );
 }

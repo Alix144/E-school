@@ -1,4 +1,4 @@
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import school from "../images/school.png"
 import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux";
@@ -7,8 +7,9 @@ import { useState, useEffect } from "react";
 
 const Header = () => {
     const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+    // const nameR = useSelector(state => state.name.name);
     const dispatch = useDispatch();
-    const [name, setName] = useState();
+    // const [name, setName] = useState(useSelector(state => state.name.name));
     const [error, setError] = useState();
 
     const navigate = useNavigate()
@@ -23,31 +24,53 @@ const Header = () => {
 
     //   *****get users name*****
 
-    // const id = useParams().id 
-    
 
-    const sendRequest = async() => {
-        const id = localStorage.getItem("userId");
-        let data;
-      try {
-        const res = await axios.get(`http://localhost:4000/user/${id}`)
-        console.log(res.data.users.name)
-        // data = await res.data;
-        data = res.data.users.name
-        return data;
-  
-      } catch (err) {
-        console.log(err)
-        data = "erorororo"
-        return data
-        setError("There was an error connecting to the Database!")
-      }
-    }
-  
-    useEffect(() => {
-        setName(sendRequest())
-        // sendRequest().then(data=>setName(data)).then(data=>console.log(data))
-    },[])
+    // const sendRequest = async() => {
+    //   const id = localStorage.getItem("userId");
+
+    //   try {
+    //     setName("")
+    //     if(id){
+    //     const res = await axios.get(`http://localhost:4000/user/${id}`)
+    //     // console.log(res.data.users.name)
+    //     // data = await res.data;
+    //     const data = res.data.users.name;
+    //     setName(data)
+    //     // return data;
+    //     }
+    //   } catch (err) {
+    //     console.log(err)
+    //     setError("There was an error connecting to the Database!")
+    //   }
+    // }
+
+    // sendRequest()
+
+    // useEffect(() => {
+    //     {isLoggedIn && sendRequest().then(data=>setName(data))}
+    //     // sendRequest().then(data=>setName(data)).then(data=>console.log(data))
+    //     {!isLoggedIn && setName("")}
+    //     console.log(name)
+    // },[])
+
+  //   useEffect(() => {
+  //     if (isLoggedIn) {
+  //         const sendRequest = async () => {
+  //             try {
+  //                 const id = localStorage.getItem("userId");
+  //                 if (id) {
+  //                     const res = await axios.get(`http://localhost:4000/user/${id}`);
+  //                     const data = res.data.users.name;
+  //                     dispatch(nameActions.setName(data)); // Assuming you have a setName action
+  //                 }
+  //             } catch (err) {
+  //                 console.log(err);
+  //                 setError("There was an error connecting to the Database!");
+  //             }
+  //         }
+  //         sendRequest();
+  //     }
+  // }, [isLoggedIn, dispatch]);
 
     return ( 
         <header>
@@ -56,7 +79,7 @@ const Header = () => {
 
             {isLoggedIn && 
             <>
-                <h4>{name}</h4>
+                <h4>{}</h4>
                 <Link to={"/login"} onClick={()=>dispatch(authActions.logout())}>Logout</Link>
             </>
             }

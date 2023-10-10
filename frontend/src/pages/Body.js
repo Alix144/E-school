@@ -25,26 +25,23 @@ const Body = () => {
     
         <div className="body">
 
-            {(role == "student") && 
+            {(role === "student") && 
             <>
                 <h1>Student</h1>
                 <StudentHW/>
                 <StudentTeachers/>
-                <AnnouncmentsDetail/>
+                <Announcments/>
             </>
-
             }
 
-
-            {(role == "teacher") &&
+            {(role === "teacher") &&
             <>
-                
                 <TeacherHW/>
                 <TeacherStudents/>
             </>
              }
 
-            {(role == "admin") &&
+            {(role === "admin") &&
             <>
                 <AdminTeachers/>
                 <AdminStudents/>

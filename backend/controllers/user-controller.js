@@ -73,7 +73,6 @@ export const signup = async(req, res, next) => {
             existingSubject = await User.findOne({subject})
         }
         
-
     }catch(err){
         return console.log(err + "there was an error")
     }
@@ -131,4 +130,33 @@ export const login = async(req, res, next) => {
     }
 
     return res.status(200).json({message: "Login Successfull", user: existingUser})
+}
+
+export const editUser = async(req, res, next) => {
+    const {name, subject} = req.body;
+    const id = req.params.id;
+    let user;
+
+    try{
+        const existingSubject = await User.findOne({subject, _id: { $ne: id }})
+
+        if(existingSubject){
+            return res.status(400).json({message: "This Subject Has Already Been Taken!"})
+        }
+
+        user = await User.findByIdAndUpdate(id,{
+            name,
+            subject,
+        })
+
+    }catch(err){
+        console.log(err)
+        return res.status(500).json({message: "idkkkkkkkkk"})
+    }
+
+    if(!user){
+        return res.status(500).json({message: "Unable To Update The workout"})
+    }
+
+    return res.status(200).json({user})
 }

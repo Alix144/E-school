@@ -62,7 +62,7 @@ const AdminTeachers = () => {
                         });}
                     
                       return (
-                        <tr key={index} onClick={()=>{navigate("/edit/teacher")}}>
+                        <tr key={index} onClick={()=>navigate(`/edit/teacher/${teacher._id}`)}>
                           <td>{teacher.name}</td>
                           <td>{teacher.email}</td>
                           <td>{teacher.subject}</td>

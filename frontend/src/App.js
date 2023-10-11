@@ -47,8 +47,8 @@ function App() {
                   <Route path="/body" element={<Admin />}/>
                   <Route path="/add/teacher" element={<AdminAddT />}/>
                   <Route path="/add/student" element={<AdminAddS />}/>
-                  <Route path="/edit/teacher" element={<AdminEditT />}/>
-                  <Route path="/edit/student" element={<AdminEditS />}/>
+                  <Route path="/edit/teacher/:id" element={<AdminEditT />}/>
+                  <Route path="/edit/student/:id" element={<AdminEditS />}/>
                 </>
               }
 

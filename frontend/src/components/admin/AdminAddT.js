@@ -1,5 +1,11 @@
+import { useNavigate } from 'react-router-dom';
+
 const AdminAddT = () => {
+
+    const navigate = useNavigate(); 
+
     return ( 
+        <div className="body">
         <div className="form teachers">
             <h1>Add Teacher</h1>
             <form action="">
@@ -20,8 +26,9 @@ const AdminAddT = () => {
                     <input type="text" />
                 </div>
 
-                <button>Add</button>
+                <button >Add</button>
             </form>
+        </div>
         </div>
      );
 }

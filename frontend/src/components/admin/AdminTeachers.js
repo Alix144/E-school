@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const AdminTeachers = () => {
+
+    const navigate = useNavigate(); 
 
     const [teachers, setTeachers] = useState()
     const [students, setStudents] = useState()
@@ -48,28 +51,6 @@ const AdminTeachers = () => {
                 </tr>
                 </thead>
 
-                {/* <tbody>
-                {teachers && teachers.slice().reverse().map((teacher, index) => (
-                   
-                    <tr key={index}>
-                        <td>{teacher.name}</td>
-                        <td>{teacher.email}</td>
-                        <td>{teacher.subject}</td>
-
-                        { students && students.map((student, index) => {
-                             let studentNum = 0;
-                            if(student.subjects.includes(teachers.subject)){
-                                studentNum ++;
-                            }
-                        })
-                        
-                        }
-
-                        <td>{studentNum}</td>
-                    </tr>
-                 ))}
-                </tbody> */}
-
                 <tbody>
                     {teachers && teachers.slice().reverse().map((teacher, index) => {
                       let studentNum = 0;
@@ -81,7 +62,7 @@ const AdminTeachers = () => {
                         });}
                     
                       return (
-                        <tr key={index}>
+                        <tr key={index} onClick={()=>{navigate("/edit/teacher")}}>
                           <td>{teacher.name}</td>
                           <td>{teacher.email}</td>
                           <td>{teacher.subject}</td>
@@ -94,7 +75,7 @@ const AdminTeachers = () => {
             </table>
             </div>
 
-            <button>Add Teacher</button>
+            <button onClick={()=>{navigate("/add/teacher")}}>Add Teacher</button>
         </div>
      );
 }

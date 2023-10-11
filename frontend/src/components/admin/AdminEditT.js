@@ -1,5 +1,6 @@
 const AdminEditT = () => {
     return ( 
+        <div className="body">
         <div className="form teachers">
             <h1>Edit Teacher</h1>
             <form action="">
@@ -20,6 +21,7 @@ const AdminEditT = () => {
 
                 <button>Edit</button>
             </form>
+        </div>
         </div>
      );
 }

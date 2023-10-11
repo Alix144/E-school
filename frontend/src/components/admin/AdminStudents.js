@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const AdminStudents = () => {
+    const navigate = useNavigate();  
     const [students, setStudents] = useState()
     
     const sendRequest = async() => {
@@ -34,7 +36,7 @@ const AdminStudents = () => {
 
                 <tbody>
                 {students && students.slice().reverse().map((students, index) => (
-                    <tr key={index}>
+                    <tr key={index} onClick={()=>{navigate("/edit/student")}}>
                         <td>{students.name}</td>
                         <td>{students.email}</td>
                         <td>{students.subjects.length}</td>
@@ -45,7 +47,7 @@ const AdminStudents = () => {
             </table>
             </div>
 
-            <button>Add Student</button>
+            <button onClick={()=>{navigate("/add/student")}}>Add Student</button>
         </div>
      );
 }

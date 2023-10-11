@@ -1,5 +1,6 @@
 const AdminEditS = () => {
     return ( 
+        <div className="body">
         <div className="form students">
             <h1>Edit Student</h1>
             <form action="">
@@ -65,6 +66,7 @@ const AdminEditS = () => {
 
                 <button>Edit</button>
             </form>
+        </div>
         </div>
      );
 }

@@ -4,13 +4,13 @@ import axios from 'axios';
 
 const AdminAddT = () => {
 
-    const navigate = useNavigate(); 
-
     const [error, setError] = useState('');
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [subject, setSubject] = useState("")
+
+    const navigate = useNavigate(); 
 
     const handleSubmit = async(e) => {
         e.preventDefault()
@@ -31,7 +31,7 @@ const AdminAddT = () => {
             // const data = await res.data;
 
             navigate("/body")
-            alert("User Has Been Added Successfully")
+            alert("Teacher Has Been Added Successfully")
 
         } catch (err) {
             console.log(err.response.data.message)

@@ -66,8 +66,13 @@ export const signup = async(req, res, next) => {
     const {name, email, password, role, subjects, subject} = req.body;
 
     let existingUser;
+    let existingSubject;
     try{
         existingUser = await User.findOne({name})
+        if(subject){
+            existingSubject = await User.findOne({subject})
+        }
+        
 
     }catch(err){
         return console.log(err + "there was an error")
@@ -75,6 +80,10 @@ export const signup = async(req, res, next) => {
 
     if(existingUser){
         return res.status(400).json({message: "User Already Exists!"})
+    }
+
+    if(existingSubject){
+        return res.status(400).json({message: "This Subject Has Already Been Taken!"})
     }
 
     const hashedPassword = bcrypt.hashSync(password);

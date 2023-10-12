@@ -18,47 +18,47 @@ const AdminEditS = () => {
 
                     <div className="subject">
                         <input type="checkbox" id="math" name="math"/>
-                        <label for="math">Math</label>
+                        <label htmlFor="math">Math</label>
                     </div>
 
                     <div className="subject">
                         <input type="checkbox" id="art" name="art"/>
-                        <label for="art">Art</label>
+                        <label htmlFor="art">Art</label>
                     </div>
 
                     <div className="subject">
                         <input type="checkbox" id="geography" name="geography"/>
-                        <label for="geography">Geography</label>
+                        <label htmlFor="geography">Geography</label>
                     </div>
 
                     <div className="subject">
                         <input type="checkbox" id="history" name="history"/>
-                        <label for="history">History</label>
+                        <label htmlFor="history">History</label>
                     </div>
 
                     <div className="subject">
                         <input type="checkbox" id="biology" name="biology"/>
-                        <label for="biology">Biology</label>
+                        <label htmlFor="biology">Biology</label>
                     </div>
 
                     <div className="subject">
                         <input type="checkbox" id="chemistry" name="chemistry"/>
-                        <label for="chemistry">Chemistry</label>
+                        <label htmlFor="chemistry">Chemistry</label>
                     </div>
 
                     <div className="subject">
                         <input type="checkbox" id="physics" name="physics"/>
-                        <label for="physics">Physics</label>
+                        <label htmlFor="physics">Physics</label>
                     </div>
 
                     <div className="subject">
                         <input type="checkbox" id="spanish" name="spanish"/>
-                        <label for="spanish">Spanish</label>
+                        <label htmlFor="spanish">Spanish</label>
                     </div>
 
                     <div className="subject">
                         <input type="checkbox" id="pe" name="pe"/>
-                        <label for="pe">PE</label>
+                        <label htmlFor="pe">PE</label>
                     </div>
                 </div>
 

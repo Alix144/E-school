@@ -23,18 +23,6 @@ const AdminEditT = () => {
         }
     }
 
-    useEffect(()=>{ 
-        originalSubject = subject;
-        console.log()
-        fetchDetails()
-        .then((data)=>{
-            setName(data.users.name);
-            setEmail(data.users.email);
-            setSubject(data.users.subject)
-            setError("")
-        })
-    },[id])
-
     const handleSubmit = async(e) => {
         e.preventDefault()
 
@@ -48,7 +36,6 @@ const AdminEditT = () => {
                 subject
             })
             const data = await res.data;
-            console.log("hhoihohoph")
             navigate("/body")
             return data;
             
@@ -57,6 +44,29 @@ const AdminEditT = () => {
             setError(err.response.data.message)
         }
     }
+
+    const handleDelete = async() => {
+        try {
+            const res = axios.delete(`http://localhost:4000/user/delete/${id}`)
+            const data = await res.data;
+            console.log(res)
+            navigate("/body")
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    useEffect(()=>{ 
+        originalSubject = subject;
+        console.log()
+        fetchDetails()
+        .then((data)=>{
+            setName(data.users.name);
+            setEmail(data.users.email);
+            setSubject(data.users.subject)
+            setError("")
+        })
+    },[id])
 
     return ( 
         <div className="body">
@@ -86,7 +96,7 @@ const AdminEditT = () => {
                     </select>
                 </div>
                 {error && <p className='err'>{error}</p> }
-                <button className="delete">Delete Teacher</button>
+                <button className="delete" onClick={handleDelete}>Delete Teacher</button>
 
                 <button >Edit</button>
             </form>

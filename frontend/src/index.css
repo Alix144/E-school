@@ -58,7 +58,7 @@ nav a:hover{
   margin: 0 auto;
   margin-top: 50px;
   width: 300px;
-  height: 370px;
+  height: 470px;
   background-color: #13ABE7;
   color: #fff;
   display: flex;
@@ -223,7 +223,7 @@ button:hover{
   margin-top: 20px;
   padding: 10px;
   width: 350px;
-  height: 450px;
+  height: 490px;
   color: #fff;
   position: relative;
 }

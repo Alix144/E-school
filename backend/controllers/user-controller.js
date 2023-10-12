@@ -68,7 +68,7 @@ export const signup = async(req, res, next) => {
     let existingUser;
     let existingSubject;
     try{
-        existingUser = await User.findOne({name})
+        existingUser = await User.findOne({email})
         if(subject){
             existingSubject = await User.findOne({subject})
         }
@@ -133,20 +133,21 @@ export const login = async(req, res, next) => {
 }
 
 export const editUser = async(req, res, next) => {
-    const {name, subject} = req.body;
+    const {name, subject, subjects, role} = req.body;
     const id = req.params.id;
     let user;
 
     try{
         const existingSubject = await User.findOne({subject, _id: { $ne: id }})
 
-        if(existingSubject){
+        if(role === "teacher" && existingSubject){
             return res.status(400).json({message: "This Subject Has Already Been Taken!"})
         }
 
         user = await User.findByIdAndUpdate(id,{
             name,
             subject,
+            subjects,
         })
 
     }catch(err){
@@ -155,7 +156,7 @@ export const editUser = async(req, res, next) => {
     }
 
     if(!user){
-        return res.status(500).json({message: "Unable To Update The workout"})
+        return res.status(500).json({message: "Unable To Update The User"})
     }
 
     return res.status(200).json({user})

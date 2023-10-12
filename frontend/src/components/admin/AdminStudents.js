@@ -35,11 +35,11 @@ const AdminStudents = () => {
                 </thead>
 
                 <tbody>
-                {students && students.slice().reverse().map((students, index) => (
-                    <tr key={index} onClick={()=>{navigate("/edit/student")}}>
-                        <td>{students.name}</td>
-                        <td>{students.email}</td>
-                        <td>{students.subjects.length}</td>
+                {students && students.slice().reverse().map((student, index) => (
+                    <tr key={index} onClick={()=>navigate(`/edit/student/${student._id}`)}>
+                        <td>{student.name}</td>
+                        <td>{student.email}</td>
+                        <td>{student.subjects.length}</td>
                     </tr>
                  ))}
                 </tbody>

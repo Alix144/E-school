@@ -7,7 +7,6 @@ const AdminEditT = () => {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [subject, setSubject] = useState("")
-    let originalSubject;
     const navigate = useNavigate(); 
 
     const id = useParams().id 
@@ -33,7 +32,8 @@ const AdminEditT = () => {
         try {
             const res = await axios.put(`http://localhost:4000/user/edit/${id}`,{
                 name,
-                subject
+                subject,
+                role: "teacher"
             })
             const data = await res.data;
             navigate("/body")
@@ -57,8 +57,6 @@ const AdminEditT = () => {
     }
 
     useEffect(()=>{ 
-        originalSubject = subject;
-        console.log()
         fetchDetails()
         .then((data)=>{
             setName(data.users.name);

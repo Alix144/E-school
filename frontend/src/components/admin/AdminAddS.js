@@ -117,6 +117,8 @@ const AdminAddS = () => {
                     </div>
 
                 </div>
+                
+                {error && <p className='err'>{error}</p> }
 
                 <button>Add</button>
             </form>

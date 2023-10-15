@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from 'cors';
 import router from "./routes/user-route.js";
+import schoolRouter from "./routes/school-route.js"
 import { config } from 'dotenv';
 config();
 
@@ -18,6 +19,7 @@ app.use(cors());
 app.use(express.json())
 
 app.use("/user", router)
+app.use("/school", schoolRouter)
 
 app.get("/", (req, res)=>{
     res.send("messaghaha")

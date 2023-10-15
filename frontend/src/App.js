@@ -7,8 +7,9 @@ import LandingPage from "./pages/LandingPage"
 import Login from "./pages/Login.js"
 
 import Student from './components/Student';
-import Teacher from './components/Teacher';
 
+import Teacher from './components/Teacher';
+import TeacherAddHw from './components/teacher/TeacherAddHw';
 
 import Admin from './components/Admin';
 import AdminAddT from "./components/admin/AdminAddT";
@@ -39,7 +40,10 @@ function App() {
               }
 
               {(role === "teacher") &&
-                <Route path="/body" element={<Teacher />}/>
+                <>
+                  <Route path="/body" element={<Teacher />}/>
+                  <Route path="/add/hw" element={<TeacherAddHw />}/>
+                </>
               }
 
               {(role === "admin") &&

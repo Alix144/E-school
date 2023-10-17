@@ -1,6 +1,6 @@
 import Hw from "../models/HwModel.js";
 import User from "../models/UserModel.js"
-import bcrypt from "bcryptjs";
+import mongoose from "mongoose";
 
 export const getAllHw = async(req, res, next) => {
     let homeworks;
@@ -18,27 +18,28 @@ export const getAllHw = async(req, res, next) => {
     return res.status(200).json({homeworks})
 }
 
-export const addWorkout = async(req, res, next) => {
-    const {topic, description, deadline, file, assignedBy} = req.body;
+export const addHw = async(req, res, next) => {
+    const {topic, description, addingDate, deadline, file, assignedBy} = req.body;
 
     let existingUser;
+    let subject;
     try{
-        existingUser = await User.findById(user)
+        existingUser = await User.findById(assignedBy)
+        subject = existingUser.subject
     }catch(err){
-        console.log(err)
+        return console.log(err)
     }
 
     if(!existingUser){
         return res.status(400).json({message: "Unable to Find User by This ID"})
     }
 
-    const homework = new Hw({topic, subject, description, date, deadline, file})
+    const homework = new Hw({topic, subject, description, addingDate, deadline, file, assignedBy})
     try{
         const session = await mongoose.startSession();
         session.startTransaction();
         await homework.save({session})
 
-        existingUser.workout.push(workout)
         await existingUser.save({session})
 
         await session.commitTransaction();
@@ -47,5 +48,5 @@ export const addWorkout = async(req, res, next) => {
         return res.status(500).json({message: "err :)"})
     }
 
-    return res.status(200).json({workout})
+    return res.status(200).json({homework})
 }

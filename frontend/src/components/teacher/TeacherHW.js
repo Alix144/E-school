@@ -1,10 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { parseISO, format } from 'date-fns';
 import axios from 'axios';
 
 const TeacherHW = () => {
-
     const navigate = useNavigate(); 
+    const [hw, setHws] = useState()
+    const id = localStorage.getItem('userId');
+
+    const sendRequest = async() => {
+        try {
+          const res = await axios.get(`http://localhost:4000/school/${id}`)
+          const data = await res.data.homework;
+          return data;
+    
+        } catch (err) {
+          console.log(err)
+        }
+      }
+
+      useEffect(() => {
+          sendRequest().then(data=>setHws(data))
+      },[])
 
     return ( 
         <div className="teachers box">
@@ -16,18 +33,24 @@ const TeacherHW = () => {
                     <th>Subject</th>
                     <th>Topic</th>
                     <th>Date</th>
+                    <th>Deadline</th>
                 </tr>
                 </thead>
 
                 <tbody>
 
-                {/* {students && students.slice().reverse().map((student, index) => (
+                {hw && hw.reverse().map((hw, index) =>{
+                 const addingDate = format(parseISO(hw.addingDate), 'MMMM dd, yyyy');
+                 const deadline = format(parseISO(hw.deadline), 'MMMM dd, yyyy');
+                 return (    
                     <tr key={index}>
-                        <td>Math</td>
-                        <td>Limits</td>
-                        <td>13-03-2023</td>
+                        <td>{hw.subject}</td>
+                        <td>{hw.topic}</td>
+                        <td>{addingDate}</td>
+                        <td>{deadline}</td>
                     </tr>
-                 ))} */}
+                 )
+                 })}
                  
                 </tbody>
 

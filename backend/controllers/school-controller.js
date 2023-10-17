@@ -18,6 +18,22 @@ export const getAllHw = async(req, res, next) => {
     return res.status(200).json({homeworks})
 }
 
+export const getTeacherHw = async(req, res, next) => {
+    const id = req.params.id;
+    let homework;
+    try{
+        homework = await Hw.find({ assignedBy: id })
+    }catch(err){
+        return res.status(400).json({err})
+    }
+
+    if(!homework){
+        return res.status(404).json({message: "No homeworks Found"});
+    }
+
+    return res.status(200).json({homework})
+}
+
 export const addHw = async(req, res, next) => {
     const {topic, description, addingDate, deadline, file, assignedBy} = req.body;
 

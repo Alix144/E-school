@@ -12,8 +12,8 @@ const hwSchema = new Schema({
         type: String,
         required: true
       },
-      Description: {
-        type: String
+      description: {
+        type: String,
       },
       addingDate: {
         type: Date,

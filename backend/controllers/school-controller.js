@@ -18,6 +18,26 @@ export const getAllHw = async(req, res, next) => {
     return res.status(200).json({homeworks})
 }
 
+export const getStudentHw = async(req, res, next) => {
+    const id = req.params.id;
+    let homework;
+    let user;
+    let subjects;
+    try{
+        user = await User.findOne({ _id: id})
+        subjects = user.subjects
+        homework = await Hw.find( {subject: { $in: subjects }})
+    }catch(err){
+        return res.status(400).json({err})
+    }
+
+    if(!homework){
+        return res.status(404).json({message: "No homeworks Found"});
+    }
+
+    return res.status(200).json({homework})
+}
+
 export const getTeacherHw = async(req, res, next) => {
     const id = req.params.id;
     let homework;
@@ -29,6 +49,22 @@ export const getTeacherHw = async(req, res, next) => {
 
     if(!homework){
         return res.status(404).json({message: "No homeworks Found"});
+    }
+
+    return res.status(200).json({homework})
+}
+
+export const getHwDetails = async(req, res, next) => {
+    const id = req.params.id;
+    let homework;
+    try{
+        homework = await Hw.findOne({ _id: id })
+    }catch(err){
+        return res.status(400).json({err})
+    }
+
+    if(!homework){
+        return res.status(404).json({message: "No homework Found"});
     }
 
     return res.status(200).json({homework})

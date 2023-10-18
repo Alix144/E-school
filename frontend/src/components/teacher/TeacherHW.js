@@ -10,7 +10,7 @@ const TeacherHW = () => {
 
     const sendRequest = async() => {
         try {
-          const res = await axios.get(`http://localhost:4000/school/${id}`)
+          const res = await axios.get(`http://localhost:4000/school/teacher/${id}`)
           const data = await res.data.homework;
           return data;
     

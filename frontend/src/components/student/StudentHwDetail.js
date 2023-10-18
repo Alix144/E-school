@@ -15,9 +15,9 @@ const StudentHwDetail = () => {
           const res = await axios.get(`http://localhost:4000/school/hwDetails/${id}`)
           const data = await res.data.homework;
           console.log(data)
-          if(!data){
-            return console.log("whattttt")
-          }
+
+          setAddingDate(format(parseISO(data.addingDate), 'MMMM dd, yyyy'))
+          setDeadline(format(parseISO(data.deadline), 'MMMM dd, yyyy'))
           return data;
 
         } catch (err) {
@@ -26,14 +26,7 @@ const StudentHwDetail = () => {
       }
 
       useEffect(() => {
-          sendRequest().then(data=>setHw(data));
-
-          if (hw.addingDate && hw.deadline) {
-            setAddingDate(format(parseISO(hw.addingDate), 'MMMM dd, yyyy'));
-            setDeadline(format(parseISO(hw.deadline), 'MMMM dd, yyyy'));
-          }
-        //   setAddingDate(hw.addingDate.substring(0, 10))
-        //   setDeadline(hw.deadline.substring(0, 10))
+          sendRequest().then(data=>setHw(data))
       },[])
 
     return ( 

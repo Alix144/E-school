@@ -4,12 +4,15 @@ const StudentTeachers = () => {
             <h1>My Teachers</h1>
             <div className="table-div">
             <table>
+                <thead>
                 <tr className="th">
                     <th>Name</th>
                     <th>Email</th>
                     <th>Subject</th>
                     <th>Message</th>
                 </tr>
+                </thead>
+                <tbody>
                 <tr>
                     <td>Arife</td>
                     <td>asd@hotmail.com</td>
@@ -22,7 +25,7 @@ const StudentTeachers = () => {
                     <td>PE</td>
                     <td><a href="">Message</a></td>
                 </tr>
-
+                </tbody>
 
             </table>
             </div>

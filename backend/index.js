@@ -17,6 +17,7 @@ const app = express();
 app.use(cors());
 
 app.use(express.json())
+app.use("/files", express.static("files"));
 
 app.use("/user", router)
 app.use("/school", schoolRouter)

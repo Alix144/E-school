@@ -6,6 +6,7 @@ import axios from 'axios';
 const StudentHwDetail = () => {
     const navigate = useNavigate(); 
     const [hw, setHw] = useState({})
+    const [file, setFile] = useState(null)
     const [addingDate, setAddingDate] = useState();
     const [deadline, setDeadline] = useState();
     const {id} = useParams();
@@ -15,7 +16,9 @@ const StudentHwDetail = () => {
           const res = await axios.get(`http://localhost:4000/school/hwDetails/${id}`)
           const data = await res.data.homework;
           console.log(data)
-
+          if(data.file){
+            setFile(data.file)
+          }
           setAddingDate(format(parseISO(data.addingDate), 'MMMM dd, yyyy'))
           setDeadline(format(parseISO(data.deadline), 'MMMM dd, yyyy'))
           return data;
@@ -23,6 +26,10 @@ const StudentHwDetail = () => {
         } catch (err) {
           console.log(err)
         }
+      }
+
+      const showFile = async() => {
+        window.open(`http://localhost:4000/files/${file}`, "_blank", "noreferrer");
       }
 
       useEffect(() => {
@@ -53,10 +60,11 @@ const StudentHwDetail = () => {
                     <h3>Deadline:</h3>
                     <p>{deadline}</p>
                 </div>
+                {file &&
                 <div className="output">
                     <h3>File:</h3>
-                    <p><a href="">Download</a></p> 
-                </div>
+                    <p><a href="" onClick={showFile}>Download</a></p> 
+                </div>}
 
         </div>
      );

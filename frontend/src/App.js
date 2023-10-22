@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import {authActions, roleActions } from './store';
 
 import Header from "./components/Header";
 import Body from "./pages/Body.js"
@@ -22,6 +24,28 @@ import AdminEditS from './components/admin/AdminEditS';
 function App() {
 
   const role = useSelector(state => state.role.role);
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+
+    console.log(role)
+    if(localStorage.getItem("userId")){
+      dispatch(authActions.login());
+    }
+
+    const savedRole = localStorage.getItem('role');
+      if (savedRole) {
+        if(savedRole === "admin"){
+          dispatch(roleActions.admin())
+        }else if(savedRole === "teacher"){
+            dispatch(roleActions.teacher())
+        }else if(savedRole === "student"){
+          dispatch(roleActions.student())
+      }
+      }
+    }, [dispatch])
 
   return (
     
@@ -31,26 +55,29 @@ function App() {
             <Header/>
 
             <Routes>
+
+              { (!isLoggedIn) &&
+              <>
               <Route path="/" element={<LandingPage />}/>
               <Route path="/login" element={<Login />}/>
+              </>
+              }
 
-            
-
-              {(role === "student") && 
+              {(role === "student" && isLoggedIn) && 
               <>
                 <Route path="/body" element={<Student />}/>
                 <Route path="/hwDetails/:id" element={<StudentHwDetail />}/>
               </>
               }
 
-              {(role === "teacher") &&
+              {(role === "teacher" && isLoggedIn) &&
                 <>
                   <Route path="/body" element={<Teacher />}/>
                   <Route path="/add/hw" element={<TeacherAddHw />}/>
                 </>
               }
 
-              {(role === "admin") &&
+              {(role === "admin" && isLoggedIn) &&
                 <>
                   <Route path="/body" element={<Admin />}/>
                   <Route path="/add/teacher" element={<AdminAddT />}/>
@@ -59,7 +86,7 @@ function App() {
                   <Route path="/edit/student/:id" element={<AdminEditS />}/>
                 </>
               }
-
+            
               {/* <Route path="/body" element={<Body />}/> */}
             </Routes>
 

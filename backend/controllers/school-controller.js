@@ -71,8 +71,9 @@ export const getHwDetails = async(req, res, next) => {
 }
 
 export const addHw = async(req, res, next) => {
-    const {topic, description, addingDate, deadline, file, assignedBy} = req.body;
-
+    const {topic, description, addingDate, deadline, assignedBy} = req.body;
+    const file = req.file.filename;
+    console.log(file);
     let existingUser;
     let subject;
     try{

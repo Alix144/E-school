@@ -45,6 +45,7 @@ const Login = () => {
                 dispatch(roleActions.student())
             }
 
+            localStorage.setItem("role", data.user.role)
 
             navigate("/body")
 

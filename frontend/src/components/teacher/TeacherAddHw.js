@@ -7,7 +7,7 @@ const TeacherAddHw = () => {
     const [topic, setTopic] = useState('');
     const [deadline, setDeadline] = useState("")
     const [description, setDescription] = useState("")
-    const [file, setFile] = useState("mafile")
+    const [file, setFile] = useState("")
     const [error, setError] = useState('');
     const id = localStorage.getItem('userId');
 
@@ -29,14 +29,24 @@ const TeacherAddHw = () => {
           
             const addingDate = `${year}-${month}-${day}`;
 
-            const res = await axios.post("http://localhost:4000/school/add/hw", {
-                topic,
-                description,
-                addingDate,
-                deadline,
-                file,
-                assignedBy: id,
-            })
+            const formData = new FormData();
+            formData.append("topic", topic);
+            formData.append("description", description);
+            formData.append("addingDate", addingDate);
+            formData.append("deadline", deadline);
+            formData.append("file", file);
+            formData.append("assignedBy", id);
+
+            const res = await axios.post("http://localhost:4000/school/add/hw", formData)
+
+            // const res = await axios.post("http://localhost:4000/school/add/hw", {
+            //     topic,
+            //     description,
+            //     addingDate,
+            //     deadline,
+            //     file,
+            //     assignedBy: id,
+            // })
 
             navigate("/body")
             alert("Homework Has Been Added Successfully")
@@ -65,7 +75,7 @@ const TeacherAddHw = () => {
                 </div>
                 <div>
                     <label htmlFor="">File</label>
-                    <input type="file" onChange={(e)=>setFile(e.target.value)}/>
+                    <input type="file" onChange={(e)=>setFile(e.target.files[0])}/>
                 </div>
 
                 {error && <p className='err'>{error}</p> }

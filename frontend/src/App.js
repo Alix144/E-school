@@ -30,7 +30,6 @@ function App() {
 
   useEffect(() => {
 
-    console.log(role)
     if(localStorage.getItem("userId")){
       dispatch(authActions.login());
     }

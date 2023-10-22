@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const TeacherHW = () => {
     const navigate = useNavigate(); 
-    const [hw, setHws] = useState()
+    const [hws, setHws] = useState()
     const id = localStorage.getItem('userId');
 
     const sendRequest = async() => {
@@ -20,7 +20,7 @@ const TeacherHW = () => {
       }
 
       useEffect(() => {
-          sendRequest().then(data=>setHws(data))
+          sendRequest().then(data=>setHws(data.reverse()))
       },[])
 
     return ( 
@@ -39,7 +39,7 @@ const TeacherHW = () => {
 
                 <tbody>
 
-                {hw && hw.reverse().map((hw, index) =>{
+                {hws && hws.map((hw, index) =>{
                  const addingDate = format(parseISO(hw.addingDate), 'MMMM dd, yyyy');
                  const deadline = format(parseISO(hw.deadline), 'MMMM dd, yyyy');
                  return (    

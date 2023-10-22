@@ -20,7 +20,7 @@ const StudentHW = () => {
       }
 
       useEffect(() => {
-          sendRequest().then(data=>setHws(data))
+          sendRequest().then(data=>setHws(data.reverse()))
       },[])
 
     return ( 

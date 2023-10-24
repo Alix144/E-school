@@ -199,3 +199,22 @@ export const getTeacherComingHws = async(req, res, next) => {
 
     return res.status(200).json({comingHws})
 }
+
+export const gradeHw = async(req, res, next) => {
+    const {grade} = req.body;
+    const { id } = req.params;
+
+    try {
+        const addedGrade = await SubmittedHw.findByIdAndUpdate(
+          id,
+          { grade },
+          { new: true }
+        );
+    
+        res.json(addedGrade);
+      } catch (error) {
+        res.status(500).json({ error: 'error' });
+      }
+    
+
+}

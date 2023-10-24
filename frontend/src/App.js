@@ -20,6 +20,7 @@ import AdminAddT from "./components/admin/AdminAddT";
 import AdminAddS from './components/admin/AdminAddS';
 import AdminEditT from './components/admin/AdminEditT';
 import AdminEditS from './components/admin/AdminEditS';
+import TeacherHwGrade from './components/teacher/TeacherHwGrade';
 
 
 function App() {
@@ -75,6 +76,7 @@ function App() {
                 <>
                   <Route path="/body" element={<Teacher />}/>
                   <Route path="/add/hw" element={<TeacherAddHw />}/>
+                  <Route path="/grade/:id" element={<TeacherHwGrade />}/>
                 </>
               }
 

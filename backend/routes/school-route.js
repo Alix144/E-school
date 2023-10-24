@@ -1,5 +1,5 @@
 import express from "express";
-import { addHw, getAllHw, getStudentHw, getTeacherHw, getHwDetails, submitHw, getStudentSubmittedHws, getTeacherComingHws } from "../controllers/school-controller.js";
+import { addHw, getAllHw, getStudentHw, getTeacherHw, getHwDetails, submitHw, getStudentSubmittedHws, getTeacherComingHws, gradeHw } from "../controllers/school-controller.js";
 
 const schoolRouter = express.Router();
 
@@ -28,5 +28,7 @@ const upload = multer({ storage: storage });
 schoolRouter.post("/add/hw", upload.single("file"), addHw)
 
 schoolRouter.post("/submit/hw", upload.single("file"), submitHw)
+
+schoolRouter.post("/grade/:id", gradeHw)
 
 export default schoolRouter;

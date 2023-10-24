@@ -44,7 +44,7 @@ const TeacherComingHw = () => {
                 {hw && hw.map((hw, index) =>{
                  const date = format(parseISO(hw.submittedDate), 'MMMM dd, yyyy');
                  return (    
-                    <tr key={index} onClick={()=>{navigate(`/hwDetails/${hw._id}`)}}>
+                    <tr key={index} onClick={()=>{navigate(`/grade/${hw._id}`)}}>
                         <td>{hw.submittedBy.name}</td>
                         <td>{hw.hw.topic}</td>
                         <td>{date}</td>

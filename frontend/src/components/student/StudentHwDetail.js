@@ -77,9 +77,9 @@ const StudentHwDetail = () => {
                 {showChild && (
                 <div>
                     <SendSolution 
+                          hwId={hw._id}
                           subject= {hw.subject}
                           topic={hw.topic}
-                          id={id}
                     />
                     <button onClick={handleClick}>Go Back</button>
                 </div>

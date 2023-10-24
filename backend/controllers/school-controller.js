@@ -106,13 +106,14 @@ export const addHw = async(req, res, next) => {
 }
 
 export const submitHw = async(req, res, next) => {
-    const {hw, submittedDate, user} = req.body;
+    const {hw, submittedDate, userId} = req.body;
     const file = req.file.filename;
+
     console.log(file);
     let existingUser;
     let homework;
     try{
-        existingUser = await User.findById(user)
+        existingUser = await User.findById(userId)
         homework = await Hw.findById(hw)
     }catch(err){
         return console.log(err)
@@ -126,7 +127,7 @@ export const submitHw = async(req, res, next) => {
         return res.status(400).json({message: "Unable to Find Homework by This ID"})
     }
 
-    const submittedHw = new SubmittedHw({hw, submittedDate, file, submittedBy: user})
+    const submittedHw = new SubmittedHw({hw, submittedDate, file, submittedBy: userId})
     try{
         const session = await mongoose.startSession();
         session.startTransaction();
@@ -149,7 +150,7 @@ export const getStudentSubmittedHws = async(req, res, next) => {
     let user;
     try{
         user = await User.findOne({ _id: id})
-        homeworks = await SubmittedHw.find({submittedBy:id})
+        homeworks = await SubmittedHw.find({submittedBy:id}).populate('hw')
 
     }catch(err){
         return res.status(400).json({err})

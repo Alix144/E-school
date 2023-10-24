@@ -13,7 +13,6 @@ const SendSolution = ({hwId, subject, topic}) => {
 
     const handleSubmit = async(e) => {
         e.preventDefault()
-        console.log('hiii')
         if(!file){
             return setError("Please Upload Your Homework!")
         }
@@ -64,7 +63,7 @@ const SendSolution = ({hwId, subject, topic}) => {
                         <h3>File:</h3>
                         <input type="file" onChange={(e)=>setFile(e.target.files[0])}/>
                         {error && <p className='err'>{error}</p> }
-                        <button type='submit' onClick={()=>console.log("ehehehe")}>Submit</button>
+                        <button type='submit'>Submit</button>
                     </form>
                    
                 </div>

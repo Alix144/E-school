@@ -166,3 +166,36 @@ export const getStudentSubmittedHws = async(req, res, next) => {
 
     return res.status(200).json({homeworks})
 }
+
+export const getTeacherComingHws = async(req, res, next) => {
+    const id = req.params.id;
+    let homeworks;
+    let user;
+    let subject;
+    let comingHws = [];
+    try{
+        user = await User.findOne({ _id: id})
+        homeworks = await SubmittedHw.find().populate('hw').populate('submittedBy')
+
+    }catch(err){
+        return res.status(400).json({err})
+    }
+
+    if(!user){
+        return res.status(404).json({message: "No User Found"});
+    }
+
+    if(!homeworks){
+        return res.status(404).json({message: "No homeworks Found"});
+    }
+
+    subject = user.subject
+    
+    homeworks.forEach(submittedHw => {
+        if(submittedHw.hw.subject === subject){
+            comingHws.push(submittedHw)
+        }
+    });
+
+    return res.status(200).json({comingHws})
+}

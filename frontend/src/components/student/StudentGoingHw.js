@@ -49,7 +49,10 @@ const StudentGoingHw = () => {
                         <td>{hw.hw.subject}</td>
                         <td>{hw.hw.topic}</td>
                         <td>{date}</td>
-                        <td>-</td>
+                        {hw.grade ?
+                            <td>{hw.grade}</td>:
+                            <td>-</td>
+                        }
                     </tr>
                  )
                  })}

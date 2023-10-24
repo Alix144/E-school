@@ -1,5 +1,5 @@
 import express from "express";
-import { addHw, getAllHw, getStudentHw, getTeacherHw, getHwDetails, submitHw, getStudentSubmittedHws } from "../controllers/school-controller.js";
+import { addHw, getAllHw, getStudentHw, getTeacherHw, getHwDetails, submitHw, getStudentSubmittedHws, getTeacherComingHws } from "../controllers/school-controller.js";
 
 const schoolRouter = express.Router();
 
@@ -7,6 +7,7 @@ schoolRouter.get("/", getAllHw)
 schoolRouter.get("/student/:id", getStudentHw)
 schoolRouter.get("/studentHw/:id", getStudentSubmittedHws)
 schoolRouter.get("/teacher/:id", getTeacherHw)
+schoolRouter.get("/teacher/coming/:id", getTeacherComingHws)
 schoolRouter.get("/hwDetails/:id", getHwDetails)
 
 

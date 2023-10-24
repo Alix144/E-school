@@ -10,6 +10,7 @@ import Login from "./pages/Login.js"
 
 import Student from './components/Student';
 import StudentHwDetail from './components/student/StudentHwDetail';
+import SendSolution from './components/student/SendSolution';
 
 import Teacher from './components/Teacher';
 import TeacherAddHw from './components/teacher/TeacherAddHw';
@@ -65,6 +66,7 @@ function App() {
               {(role === "student" && isLoggedIn) && 
               <>
                 <Route path="/body" element={<Student />}/>
+                <Route path="/sendsolution" element={<SendSolution />}/>
                 <Route path="/hwDetails/:id" element={<StudentHwDetail />}/>
               </>
               }

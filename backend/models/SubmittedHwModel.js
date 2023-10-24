@@ -4,17 +4,10 @@ const Schema = mongoose.Schema;
 
 const submittedhwSchema = new Schema({
 
-      topic: {
-        type: String,
-        required: true
-      },
-      subject: {
-        type: String,
-        required: true
-      },
-      name: {
-        type: String,
-        required: true
+      hw: {
+        type: mongoose.Types.ObjectId,
+        ref: "Hw",
+        required: true,
       },
       submittedDate: {
         type: Date,

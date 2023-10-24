@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { parseISO, format } from 'date-fns';
 import axios from 'axios';
+import SendSolution from './SendSolution';
 
 const StudentHwDetail = () => {
     const navigate = useNavigate(); 
@@ -10,6 +11,12 @@ const StudentHwDetail = () => {
     const [addingDate, setAddingDate] = useState();
     const [deadline, setDeadline] = useState();
     const {id} = useParams();
+
+    const [showChild, setShowChild] = useState(false);
+
+    const handleClick = () => {
+        setShowChild(!showChild);
+    }
 
     const sendRequest = async() => {
         try {
@@ -66,6 +73,17 @@ const StudentHwDetail = () => {
                     <p><a href="" onClick={showFile}>Download</a></p> 
                 </div>}
 
+                <button onClick={handleClick}>Send Solution</button>
+                {showChild && (
+                <div>
+                    <SendSolution 
+                          subject= {hw.subject}
+                          topic={hw.topic}
+                          id={id}
+                    />
+                    <button onClick={handleClick}>Go Back</button>
+                </div>
+            ) }
         </div>
      );
 }

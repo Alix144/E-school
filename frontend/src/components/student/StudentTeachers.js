@@ -15,7 +15,7 @@ const StudentTeachers = () => {
                 <tbody>
                 <tr>
                     <td>Arife</td>
-                    <td>asd@hotmail.com</td>
+                    <td>not-working@hotmail.com</td>
                     <td>Math</td>
                     <td><a href="">Message</a></td>
                 </tr>

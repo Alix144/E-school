@@ -1,4 +1,5 @@
 import Hw from "../models/HwModel.js";
+import SubmittedHw from "../models/SubmittedHwModel.js";
 import User from "../models/UserModel.js"
 import mongoose from "mongoose";
 
@@ -102,4 +103,65 @@ export const addHw = async(req, res, next) => {
     }
 
     return res.status(200).json({homework})
+}
+
+export const submitHw = async(req, res, next) => {
+    const {hw, submittedDate, user} = req.body;
+    const file = req.file.filename;
+    console.log(file);
+    let existingUser;
+    let homework;
+    try{
+        existingUser = await User.findById(user)
+        homework = await Hw.findById(hw)
+    }catch(err){
+        return console.log(err)
+    }
+
+    if(!existingUser){
+        return res.status(400).json({message: "Unable to Find User by This ID"})
+    }
+    
+    if(!homework){
+        return res.status(400).json({message: "Unable to Find Homework by This ID"})
+    }
+
+    const submittedHw = new SubmittedHw({hw, submittedDate, file, submittedBy: user})
+    try{
+        const session = await mongoose.startSession();
+        session.startTransaction();
+        await submittedHw.save({session})
+
+        await existingUser.save({session})
+
+        await session.commitTransaction();
+    }catch(err){
+        console.log(err)
+        return res.status(500).json({message: "err :)"})
+    }
+
+    return res.status(200).json({submittedHw})
+}
+
+export const getStudentSubmittedHws = async(req, res, next) => {
+    const id = req.params.id;
+    let homeworks;
+    let user;
+    try{
+        user = await User.findOne({ _id: id})
+        homeworks = await SubmittedHw.find({submittedBy:id})
+
+    }catch(err){
+        return res.status(400).json({err})
+    }
+
+    if(!user){
+        return res.status(404).json({message: "No User Found"});
+    }
+
+    if(!homeworks){
+        return res.status(404).json({message: "No homeworks Found"});
+    }
+
+    return res.status(200).json({homeworks})
 }
